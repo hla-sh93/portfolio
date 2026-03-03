@@ -1,0 +1,98 @@
+{
+  "metadata": {
+    "title": "Hla Shindeah — Portfolio",
+    "description": "Creative developer & designer crafting digital experiences with precision and purpose."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Hla Shindeah",
+    "title": "Creative Developer & Designer",
+    "description": "I craft digital experiences that blend aesthetics with functionality — bringing ideas to life through code and design.",
+    "cta": "View My Work",
+    "contact": "Get in Touch"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "My Story",
+    "downloadCV": "Download CV"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Selected Work",
+    "viewAll": "View All",
+    "viewProject": "View Project",
+    "categories": {
+      "all": "All",
+      "videos": "Videos",
+      "graphic-design": "Graphic Design",
+      "uiux": "UI/UX",
+      "websites": "Websites"
+    },
+    "filters": {
+      "search": "Search projects...",
+      "sortNewest": "Newest",
+      "sortLiked": "Most Liked",
+      "sortAZ": "A–Z"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts & Insights",
+    "readMore": "Read More",
+    "minRead": "min read",
+    "tags": "Tags",
+    "search": "Search articles..."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's Work Together",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Your Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Something went wrong. Please try again."
+    },
+    "info": {
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location"
+    },
+    "subjects": {
+      "general": "General Inquiry",
+      "project": "Project Collaboration",
+      "freelance": "Freelance Work",
+      "other": "Other"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "back": "Back",
+    "seeMore": "See More",
+    "share": "Share",
+    "copyLink": "Copy Link",
+    "copied": "Copied!",
+    "likes": "Likes",
+    "views": "Views"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}

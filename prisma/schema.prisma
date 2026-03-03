@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Project {
+  id          String          @id @default(cuid())
+  slug        String          @unique
+  titleEn     String
+  titleAr     String
+  descEn      String          @db.Text
+  descAr      String          @db.Text
+  bodyEn      String?         @db.Text
+  bodyAr      String?         @db.Text
+  category    ProjectCategory
+  tags        String[]
+  coverImage  String
+  client      String?
+  role        String?
+  tools       String[]
+  year        Int?
+  likes       Int             @default(0)
+  featured    Boolean         @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  media Media[]
+  likeRecords Like[]
+
+  @@index([category])
+  @@index([featured])
+  @@index([publishedAt])
+  @@map("projects")
+}
+
+model Media {
+  id        String    @id @default(cuid())
+  url       String
+  type      MediaType
+  alt       String?
+  order     Int       @default(0)
+  projectId String
+  project   Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("media")
+}
+
+model Article {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  titleEn     String
+  titleAr     String
+  excerptEn   String?  @db.Text
+  excerptAr   String?  @db.Text
+  bodyEn      String   @db.Text
+  bodyAr      String   @db.Text
+  coverImage  String?
+  tags        String[]
+  readTime    Int      @default(0)
+  views       Int      @default(0)
+  published   Boolean  @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published])
+  @@index([publishedAt])
+  @@map("articles")
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  ipHash    String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([ipHash, projectId])
+  @@map("likes")
+}
+
+enum Role {
+  ADMIN
+}
+
+enum ProjectCategory {
+  VIDEOS
+  GRAPHIC_DESIGN
+  UIUX
+  WEBSITES
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+}
