@@ -1,0 +1,14 @@
+{
+  "assetW": 2400,
+  "assetH": 1792,
+  "green": {
+    "left": 668,
+    "right": 1732,
+    "top": 437,
+    "bottom": 1096
+  },
+  "lidLeft": 643,
+  "lidRight": 1757,
+  "lidTop": 396,
+  "hingeY": 1139
+}
