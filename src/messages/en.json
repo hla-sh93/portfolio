@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Hla Shindeah — Portfolio",
-    "description": "Creative developer & designer crafting digital experiences with precision and purpose."
+    "description": "Hla Shindeah — Senior UI/UX Designer & Front-End Developer. Crafting digital experiences, from idea to code."
   },
   "nav": {
     "home": "Home",
@@ -13,19 +13,160 @@
   "hero": {
     "greeting": "Hello, I'm",
     "name": "Hla Shindeah",
-    "title": "Creative Developer & Designer",
-    "description": "I craft digital experiences that blend aesthetics with functionality — bringing ideas to life through code and design.",
+    "title": "Senior UI/UX Designer & Front-End Developer",
+    "titleL1": "Senior UI/UX Designer",
+    "titleL2": "& Front-End Developer",
+    "badge": "Book a Call",
+    "tagline": "Clean, scalable, production-ready digital experiences.",
+    "iAm": "I",
+    "roles": {
+      "uiux": "design interfaces",
+      "websites": "build experiences",
+      "graphic": "craft identities",
+      "video": "animate stories"
+    },
+    "description": "Seven years turning ideas into digital products people love — through design, code, and motion. From idea to code.",
     "cta": "View My Work",
-    "contact": "Get in Touch"
+    "contact": "Let's Talk"
+  },
+  "home": {
+    "hero": {
+      "name": "Hla Shindeah",
+      "title": "Creative Developer & Designer"
+    },
+    "about": {
+      "sectionTitle": "About Me",
+      "heading": "Passionate About Crafting Digital Experiences",
+      "paragraph1": "I'm a creative developer and designer with a passion for building beautiful, functional digital experiences that make a real impact.",
+      "paragraph2": "With expertise spanning web development, UI/UX design, video production, and graphic design, I bring a holistic approach to every project.",
+      "cta": "Learn More About Me",
+      "imageAlt": "Hla Shindeah"
+    },
+    "featured": {
+      "sectionTitle": "Portfolio",
+      "heading": "Featured Projects",
+      "viewAll": "View All Projects"
+    },
+    "services": {
+      "sectionTitle": "What I Do",
+      "heading": "Services I Offer",
+      "description": "From concept to completion, I deliver end-to-end creative solutions tailored to your needs.",
+      "websites": {
+        "title": "Web Development",
+        "desc": "Modern, responsive websites built with Next.js, React, and cutting-edge technologies."
+      },
+      "uiux": {
+        "title": "UI/UX Design",
+        "desc": "User-centered interfaces that balance beauty with usability and accessibility."
+      },
+      "branding": {
+        "title": "Graphic Design",
+        "desc": "Visual identities, logos, social media assets, and print materials that stand out."
+      },
+      "video": {
+        "title": "Video Production",
+        "desc": "Cinematic video content from concept through post-production and motion graphics."
+      }
+    },
+    "stats": {
+      "yearsExperience": "Years of Experience",
+      "usersReached": "Users Across My Products",
+      "appDownloads": "App Downloads",
+      "publishersServed": "Publishers Served"
+    },
+    "blog": {
+      "sectionTitle": "From the Blog",
+      "heading": "Latest Articles",
+      "viewAll": "View All Articles"
+    },
+    "ctaBanner": {
+      "heading": "Let's Work Together",
+      "subheading": "Have a project in mind? Let's create something extraordinary together.",
+      "primaryButton": "Get in Touch",
+      "secondaryButton": "View My Work"
+    }
   },
   "about": {
     "title": "About Me",
+    "heading": "About Me",
     "subtitle": "My Story",
-    "downloadCV": "Download CV"
+    "description": "A creative developer and designer passionate about crafting digital experiences that merge aesthetics with functionality.",
+    "downloadCV": "Download CV",
+    "experience": {
+      "title": "Experience",
+      "e1": {
+        "role": "UI/UX Designer (Part-time)",
+        "company": "Adler Technologies — France (Remote)",
+        "period": "May 2024 – May 2025",
+        "desc": "Redesigned ERP systems and mobile applications with a user-first approach using Figma; built responsive interfaces with HTML, CSS, JavaScript, and Three.js, collaborating directly with the Customer Service Manager to translate client needs into functional, intuitive UI."
+      },
+      "e2": {
+        "role": "Senior UI/UX Designer",
+        "company": "BW for Digital Marketing & Software Solutions — KSA (Remote)",
+        "period": "Nov 2020 – Present",
+        "desc": "Leading a team of designers and developers, streamlining creative workflows, and delivering web and mobile interfaces that increased usability and consistency."
+      },
+      "e3": {
+        "role": "Partner & Front-End Developer",
+        "company": "Zanqa Education Platform — Lattakia",
+        "period": "Jul 2019 – Jan 2023",
+        "desc": "Designed web and mobile UI using Next.js and MUI, and contributed to strategic decisions for a platform that reached 94,000+ users and 50,000+ downloads, working with 3,000+ publishers."
+      },
+      "e4": {
+        "role": "Media & Technical Officer",
+        "company": "Heba Platform — Lattakia",
+        "period": "Dec 2018 – Jun 2020",
+        "desc": "Produced media content and facilitated workshops reaching 700+ users."
+      },
+      "e5": {
+        "role": "IT Support Engineer",
+        "company": "Tishreen University — Lattakia",
+        "period": "Nov 2017 – Oct 2020",
+        "desc": "Conducted technical training that increased staff efficiency by 25%."
+      },
+      "e6": {
+        "role": "Media Director",
+        "company": "Believe in Syria Campaign — JCI Syria",
+        "period": "Jan 2018 – Aug 2019",
+        "desc": "Directed social media and campaign visuals; led print and digital media production for large-scale outreach."
+      },
+      "e7": {
+        "role": "Graphic Designer",
+        "company": "Yehia Najeeb Company — Lattakia",
+        "period": "Sep 2017 – May 2018",
+        "desc": "Developed product packaging and visual content for digital campaigns, helping boost online visibility and brand presence."
+      },
+      "e8": {
+        "role": "UI/UX Designer & Web Designer",
+        "company": "Zero One Plus Company — Lattakia",
+        "period": "Aug 2016 – Jan 2019",
+        "desc": "Created full web designs using Adobe XD, HTML, CSS, and Bootstrap; developed engaging front-end experiences for both mobile and web."
+      }
+    },
+    "skills": {
+      "title": "Skills & Tools",
+      "design": "Design Tools",
+      "frontend": "Front-End",
+      "soft": "Soft Skills",
+      "languages": "Languages",
+      "arabicNative": "Arabic — Native",
+      "englishProficient": "English — Full Professional Proficiency",
+      "softSkills": {
+        "leadership": "Team Leadership",
+        "strategic": "Strategic Thinking",
+        "problemSolving": "Problem Solving",
+        "communication": "Communication",
+        "creativeVision": "Creative Vision",
+        "commitment": "High Commitment",
+        "adaptability": "Adaptability"
+      }
+    }
   },
   "projects": {
     "title": "Projects",
+    "heading": "My Projects",
     "subtitle": "Selected Work",
+    "description": "Explore my latest work across web development, design, video, and more.",
     "viewAll": "View All",
     "viewProject": "View Project",
     "categories": {
@@ -44,24 +185,41 @@
   },
   "blog": {
     "title": "Blog",
+    "heading": "Blog",
     "subtitle": "Thoughts & Insights",
+    "description": "Exploring ideas in design, development, and creative technology.",
     "readMore": "Read More",
     "minRead": "min read",
     "tags": "Tags",
-    "search": "Search articles..."
+    "search": "Search articles...",
+    "tableOfContents": "Table of Contents"
   },
   "contact": {
     "title": "Contact",
     "subtitle": "Let's Work Together",
+    "description": "Have a project in mind or just want to say hello? I'd love to hear from you.",
     "form": {
       "name": "Your Name",
+      "namePlaceholder": "John Doe",
       "email": "Your Email",
+      "emailPlaceholder": "john@example.com",
       "subject": "Subject",
       "message": "Your Message",
+      "messagePlaceholder": "Tell me about your project...",
+      "submit": "Send Message",
       "send": "Send Message",
       "sending": "Sending...",
       "success": "Message sent successfully!",
-      "error": "Something went wrong. Please try again."
+      "error": "Something went wrong. Please try again.",
+      "successTitle": "Message Sent!",
+      "successDescription": "Thank you for reaching out. I'll get back to you soon.",
+      "errorTitle": "Failed to Send",
+      "errorDescription": "Something went wrong. Please try again later.",
+      "subjectOptions": {
+        "projectInquiry": "Project Inquiry",
+        "collaboration": "Collaboration",
+        "general": "General Question"
+      }
     },
     "info": {
       "email": "Email",
@@ -77,7 +235,9 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "builtWith": "Built with"
+    "builtWith": "Built with",
+    "madeIn": "Made with love in Lattakia",
+    "localTime": "My local time"
   },
   "common": {
     "loading": "Loading...",

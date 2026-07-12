@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: portfolio
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    # Use upstash compatible redis mock if possible, or just standard redis
+    # Standard redis doesn't expose the REST API upstash expects.
+    # To mock upstash, there is an image "hiett/serverless-redis-http" or we can mock it inside the app
+    # Actually the app already mocks it in development mode in ratelimit.ts! 
+    # Let's just run postgres.
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:

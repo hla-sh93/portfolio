@@ -1,12 +1,20 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { ArrowUpRight, Dribbble, Linkedin, Mail } from "lucide-react";
+import { LocalTime } from "./local-time";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://x.com", label: "X (Twitter)" },
-  { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+  {
+    icon: Dribbble,
+    href: "https://dribbble.com/hla-shindeah",
+    label: "Dribbble",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/hla-shindeah/",
+    label: "LinkedIn",
+  },
+  { icon: Mail, href: "mailto:hla.shindeah@gmail.com", label: "Email" },
 ];
 
 const navLinks = [
@@ -19,36 +27,51 @@ const navLinks = [
 
 export function Footer() {
   const t = useTranslations();
+  const locale = useLocale();
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-surface">
-      <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="grid gap-8 md:grid-cols-3">
-          {/* Brand */}
-          <div className="space-y-4">
+    <footer className="relative overflow-hidden border-t border-border">
+      <div className="mx-auto max-w-6xl px-6 pb-10 pt-16 lg:px-8 lg:pt-24">
+        {/* Studio sign-off: giant wordmark + invitation */}
+        <div className="mb-16 flex flex-col gap-10 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
+          <div>
             <Link
               href="/"
-              className="font-display text-xl font-bold text-text-primary"
+              className="block font-display text-[clamp(4rem,14vw,9rem)] font-black leading-[0.95] tracking-tight text-text-primary transition-colors hover:text-accent"
             >
-              Hla<span className="text-accent">.</span>
+              {locale === "ar" ? "حلا" : "Hla"}
+              <span className="text-accent">.</span>
             </Link>
-            <p className="max-w-xs text-sm text-text-secondary">
-              {t("hero.description")}
+            <p className="mt-4 max-w-sm text-base leading-relaxed text-text-secondary">
+              {t("hero.tagline")}
             </p>
           </div>
 
-          {/* Navigation */}
+          <Link
+            href="/contact"
+            className="shine group inline-flex w-fit items-center gap-3 rounded-full bg-accent px-8 py-4 text-base font-bold text-white transition-colors hover:bg-accent-hover"
+          >
+            {t("hero.badge")}
+            <ArrowUpRight
+              size={18}
+              className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5"
+            />
+          </Link>
+        </div>
+
+        {/* Link rails */}
+        <div className="grid gap-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-text-tertiary">
+            <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-text-tertiary">
               {t("nav.home")}
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {navLinks.map(({ href, key }) => (
                 <li key={key}>
                   <Link
                     href={href}
-                    className="text-sm text-text-secondary transition-colors hover:text-accent"
+                    className="text-sm font-medium text-text-secondary transition-colors hover:text-accent"
                   >
                     {t(`nav.${key}`)}
                   </Link>
@@ -57,9 +80,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Socials */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-text-tertiary">
+            <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-text-tertiary">
               {t("contact.title")}
             </h3>
             <div className="flex gap-3">
@@ -69,7 +91,7 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-text-secondary transition-colors hover:border-accent hover:text-accent"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-text-secondary transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
                   aria-label={label}
                 >
                   <Icon size={18} />
@@ -77,18 +99,45 @@ export function Footer() {
               ))}
             </div>
           </div>
+
+          <div>
+            <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-text-tertiary">
+              {t("footer.localTime")}
+            </h3>
+            <p className="text-sm font-medium text-text-secondary">
+              <LocalTime />
+            </p>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-text-tertiary">
+              حلا شندية
+            </h3>
+            <p className="text-sm font-medium text-text-secondary">
+              {t("footer.madeIn")}{" "}
+              <span className="animate-wave" aria-hidden>
+                🌊
+              </span>
+            </p>
+          </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
-          <p className="text-sm text-text-tertiary">
-            &copy; {year} Hla Shindeah. {t("footer.rights")}
+        {/* Bottom bar */}
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-7 md:flex-row">
+          <p className="text-xs text-text-tertiary">
+            &copy; {year} {t("hero.name")}. {t("footer.rights")}
           </p>
-          <p className="text-sm text-text-tertiary">
+          <p className="text-xs text-text-tertiary">
             {t("footer.builtWith")} Next.js & Tailwind CSS
           </p>
         </div>
       </div>
+
+      {/* Ambient wine glow bleeding from the bottom edge */}
+      <div
+        aria-hidden
+        className="glow-accent pointer-events-none absolute -bottom-40 start-1/2 h-80 w-[120%] -translate-x-1/2 opacity-60 rtl:translate-x-1/2"
+      />
     </footer>
   );
 }

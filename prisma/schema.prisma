@@ -4,7 +4,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -20,32 +19,35 @@ model User {
 }
 
 model Project {
-  id          String          @id @default(cuid())
-  slug        String          @unique
+  id          String   @id @default(cuid())
+  slug        String   @unique
   titleEn     String
   titleAr     String
-  descEn      String          @db.Text
-  descAr      String          @db.Text
-  bodyEn      String?         @db.Text
-  bodyAr      String?         @db.Text
-  category    ProjectCategory
+  descEn      String   @db.Text
+  descAr      String   @db.Text
+  bodyEn      String?  @db.Text
+  bodyAr      String?  @db.Text
+  category    Category
   tags        String[]
   coverImage  String
+  blurDataUrl String?
   client      String?
   role        String?
   tools       String[]
   year        Int?
-  likes       Int             @default(0)
-  featured    Boolean         @default(false)
+  likeCount   Int      @default(0)
+  featured    Boolean  @default(false)
+  published   Boolean  @default(false)
   publishedAt DateTime?
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   media Media[]
-  likeRecords Like[]
+  likes Like[]
 
   @@index([category])
   @@index([featured])
+  @@index([published])
   @@index([publishedAt])
   @@map("projects")
 }
@@ -54,8 +56,11 @@ model Media {
   id        String    @id @default(cuid())
   url       String
   type      MediaType
-  alt       String?
+  altEn     String?
+  altAr     String?
   order     Int       @default(0)
+  width     Int?
+  height    Int?
   projectId String
   project   Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
@@ -96,11 +101,24 @@ model Like {
   @@map("likes")
 }
 
-enum Role {
-  ADMIN
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("contact_messages")
 }
 
-enum ProjectCategory {
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+enum Category {
   VIDEOS
   GRAPHIC_DESIGN
   UIUX

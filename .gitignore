@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Raw portfolio assets (1.8GB) — processed copies go to public/images/projects
+my portfolio/
+cover.png
+
+# Personal & internal planning files — keep local only
+Hla-Shindeah - Resume.pdf
+prortfolio_documentation.md
+PORTFOLIO_BLUEPRINT.md
+REDESIGN_PLAN.md
+build.log
+.claude/settings.local.json

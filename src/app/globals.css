@@ -2,39 +2,38 @@
 
 /* ─── Design Tokens ─── */
 :root {
-  /* Base colors — Light mode (Apple gray) */
-  --background: #F5F5F7;
-  --foreground: #1D1D1F;
-  --surface: #FFFFFF;
-  --surface-elevated: #FFFFFF;
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.15);
+  /* Accent — Burgundy / Wine Crimson (sampled from brand cover) */
+  --accent: #B91942;
+  --accent-hover: #9E1338;
+  --accent-deep: #6D061F;
+  --accent-light: rgba(185, 25, 66, 0.08);
+  --accent-glow: rgba(185, 25, 66, 0.28);
 
-  /* Accent */
-  --accent: #0A84FF;
-  --accent-hover: #0070E0;
-  --accent-light: rgba(10, 132, 255, 0.1);
+  /* Light Mode Surfaces (warm off-white to match the wine accent) */
+  --background: #FAF7F6;
+  --foreground: #1C1416;
+  --surface: #FFFFFF;
+  --surface-elevated: rgba(255, 255, 255, 0.72);
+  --surface-acrylic: rgba(250, 247, 246, 0.85);
 
   /* Text */
-  --text-primary: #1D1D1F;
-  --text-secondary: #6E6E73;
-  --text-tertiary: #AEAEB2;
+  --text-primary: #1C1416;
+  --text-secondary: #6E6367;
+  --text-tertiary: #9C9095;
 
-  /* Glass effects */
+  /* Borders */
+  --border: rgba(28, 20, 22, 0.08);
+  --border-strong: rgba(28, 20, 22, 0.16);
+  --border-focus: rgba(185, 25, 66, 0.5);
+
+  /* Glass */
   --glass-bg: rgba(255, 255, 255, 0.72);
   --glass-border: rgba(255, 255, 255, 0.5);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
   --glass-blur: 20px;
 
-  /* Mica (Windows 11 subtle material) */
+  /* Mica (Windows 11) */
   --mica-bg: rgba(243, 243, 243, 0.85);
-
-  /* Spacing & Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
 
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -42,31 +41,59 @@
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12);
 
-  /* Navbar height */
-  --navbar-height: 64px;
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Layout */
+  --navbar-height: 84px;
+
+  /* Motion — cinematic expo easing (ui-ux-pro-max: Modern Dark Cinema) */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Category Colors — brand crimson owns UI/UX; others harmonize around it */
+  --cat-videos: #8b5cf6;
+  --cat-videos-bg: rgba(139, 92, 246, 0.1);
+  --cat-videos-border: rgba(139, 92, 246, 0.2);
+  --cat-graphic: #f59e0b;
+  --cat-graphic-bg: rgba(245, 158, 11, 0.1);
+  --cat-graphic-border: rgba(245, 158, 11, 0.2);
+  --cat-uiux: #e14a6d;
+  --cat-uiux-bg: rgba(225, 74, 109, 0.1);
+  --cat-uiux-border: rgba(225, 74, 109, 0.2);
+  --cat-websites: #60a5fa;
+  --cat-websites-bg: rgba(96, 165, 250, 0.1);
+  --cat-websites-border: rgba(96, 165, 250, 0.2);
 }
 
-/* ─── Dark Mode ─── */
-[data-theme="dark"] {
-  --background: #0F0F10;
-  --foreground: #F5F5F7;
-  --surface: #1C1C1E;
-  --surface-elevated: #2C2C2E;
+/* ─── Dark Mode — studio black with wine glow (the brand cover look) ─── */
+.dark {
+  --background: #070607;
+  --foreground: #F7F4F5;
+  --surface: #141013;
+  --surface-elevated: rgba(24, 18, 21, 0.72);
+  --surface-acrylic: rgba(12, 10, 11, 0.88);
+
+  --accent: #D62049;
+  --accent-hover: #E64A6E;
+  --accent-deep: #6D061F;
+  --accent-light: rgba(214, 32, 73, 0.14);
+  --accent-glow: rgba(214, 32, 73, 0.32);
+
+  --text-primary: #F7F4F5;
+  --text-secondary: #A39A9E;
+  --text-tertiary: #6B6266;
+
   --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.15);
-
-  --accent: #0A84FF;
-  --accent-hover: #409CFF;
-  --accent-light: rgba(10, 132, 255, 0.15);
-
-  --text-primary: #F5F5F7;
-  --text-secondary: #A1A1A6;
-  --text-tertiary: #636366;
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-focus: rgba(214, 32, 73, 0.6);
 
   --glass-bg: rgba(28, 28, 30, 0.72);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --glass-blur: 20px;
 
   --mica-bg: rgba(32, 32, 34, 0.85);
 
@@ -82,11 +109,14 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
+  --color-surface-acrylic: var(--surface-acrylic);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
+  --color-border-focus: var(--border-focus);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-light: var(--accent-light);
+  --color-accent-glow: var(--accent-glow);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
@@ -94,10 +124,19 @@
   --color-glass-border: var(--glass-border);
   --color-mica-bg: var(--mica-bg);
 
-  --font-sans: var(--font-general-sans), system-ui, sans-serif;
-  --font-display: var(--font-satoshi), system-ui, sans-serif;
-  --font-arabic: var(--font-ibm-plex-arabic), "Noto Sans Arabic", sans-serif;
-  --font-arabic-display: var(--font-noto-sans-arabic), sans-serif;
+  --color-cat-videos: var(--cat-videos);
+  --color-cat-videos-bg: var(--cat-videos-bg);
+  --color-cat-graphic: var(--cat-graphic);
+  --color-cat-graphic-bg: var(--cat-graphic-bg);
+  --color-cat-uiux: var(--cat-uiux);
+  --color-cat-uiux-bg: var(--cat-uiux-bg);
+  --color-cat-websites: var(--cat-websites);
+  --color-cat-websites-bg: var(--cat-websites-bg);
+
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-display: var(--font-poppins), system-ui, sans-serif;
+  --font-arabic: var(--font-tajawal), "Noto Sans Arabic", sans-serif;
+  --font-arabic-display: var(--font-tajawal), sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
@@ -105,32 +144,62 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  /* NOTE: with @theme inline, --font-sans is not emitted as a runtime var —
+     reference the next/font variable directly so body text never falls back
+     to the system font. */
+  font-family: var(--font-poppins), "Segoe UI", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Arabic locale body */
-[dir="rtl"] body {
-  font-family: var(--font-arabic);
+/* Studio backdrop: never a flat black/white — a faint wine radial at the top
+   gives every page atmospheric depth (brand cover language). */
+body {
+  background:
+    radial-gradient(90% 48% at 50% -12%, var(--accent-light) 0%, transparent 60%),
+    var(--background);
 }
 
-/* ─── Glass Card Utility ─── */
+/* Arabic-first: in RTL EVERYTHING resolves to Tajawal.
+   1) body font-family set directly (plain text, forms, buttons);
+   2) --font-poppins re-routed so font-display / font-sans utilities follow.
+   (Must target body — next/font defines the variables there.) */
+[dir="rtl"] body {
+  --font-poppins: var(--font-tajawal), "Noto Sans Arabic";
+  font-family: var(--font-tajawal), "Noto Sans Arabic", "Segoe UI", sans-serif;
+  line-height: 1.8; /* Arabic script needs taller lines to breathe */
+}
+
+/* Arabic display type: tighter tracking hurts Arabic ligatures — reset it */
+[dir="rtl"] .tracking-tight,
+[dir="rtl"] .tracking-tighter {
+  letter-spacing: 0;
+}
+
+/* ─── Glass Card ─── */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
-.glass-strong {
+.glass-sm {
   background: var(--glass-bg);
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.glass-nav {
+  background: var(--surface-acrylic);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border-bottom: 1px solid var(--border);
 }
 
 /* ─── Mica Surface (Windows 11) ─── */
@@ -140,31 +209,38 @@ body {
   -webkit-backdrop-filter: blur(60px) saturate(125%);
 }
 
-/* ─── Scrollbar Styling ─── */
-::-webkit-scrollbar {
-  width: 6px;
+/* ─── Category Badges ─── */
+.badge-videos {
+  color: var(--cat-videos);
+  background: var(--cat-videos-bg);
+  border: 1px solid var(--cat-videos-border);
+}
+.badge-graphic {
+  color: var(--cat-graphic);
+  background: var(--cat-graphic-bg);
+  border: 1px solid var(--cat-graphic-border);
+}
+.badge-uiux {
+  color: var(--cat-uiux);
+  background: var(--cat-uiux-bg);
+  border: 1px solid var(--cat-uiux-border);
+}
+.badge-websites {
+  color: var(--cat-websites);
+  background: var(--cat-websites-bg);
+  border: 1px solid var(--cat-websites-border);
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--text-tertiary);
-  border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
-}
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--text-tertiary); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
 
 /* ─── Selection ─── */
-::selection {
-  background: var(--accent);
-  color: white;
-}
+::selection { background: var(--accent); color: white; }
 
-/* ─── Focus Visible ─── */
+/* ─── Focus ─── */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
@@ -172,12 +248,240 @@ body {
 }
 
 /* ─── Smooth Scroll ─── */
-html {
-  scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+
+/* ─── Reading ─── */
+.prose-reading { max-width: 65ch; line-height: 1.75; }
+
+/* ─── Reading Progress Bar ─── */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 100;
+  transition: width 0.1s linear;
 }
 
-/* ─── Reading Typography ─── */
-.prose-reading {
-  max-width: 65ch;
-  line-height: 1.75;
+/* ─── Theme Wipe (View Transitions API) ───
+   The JS animates a clip-path circle from the toggle button;
+   these rules disable the default cross-fade so the wipe owns the show. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* ─── Footer Wave ─── */
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+}
+.animate-wave {
+  display: inline-block;
+  animation: wave 2.5s ease-in-out infinite;
+  transform-origin: 70% 70%;
+}
+
+/* ─── Hero tint (shifts with the morphing discipline verb) ─── */
+.hero-mesh {
+  transition: background-color 1.2s ease;
+}
+
+/* ─── Studio Layer ───
+   Utilities that give the site its design-studio character:
+   blueprint grid, wine glow, outlined display type, marquee. */
+
+/* Fine blueprint grid (like the brand cover) */
+.bg-grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Soft radial wine glow — position with utility classes */
+.glow-accent {
+  background: radial-gradient(
+    ellipse at center,
+    var(--accent-glow) 0%,
+    transparent 65%
+  );
+}
+
+/* Outlined display word — the editorial "one broken rule" */
+.text-stroke {
+  -webkit-text-stroke: 1.5px var(--text-primary);
+  color: transparent;
+}
+.text-stroke-accent {
+  -webkit-text-stroke: 1.5px var(--accent);
+  color: transparent;
+}
+
+/* Tool marquee — one seamless loop (content duplicated in markup) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+[dir="rtl"] .animate-marquee {
+  animation-direction: reverse;
+}
+.marquee-mask {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+}
+
+/* ─── Studio Cards & Effects (ui-ux-pro-max: Modern Dark Cinema recipe) ─── */
+
+/* Ambient light blob — slow drift, low opacity, heavy blur */
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(42px, -28px) scale(1.08); }
+  66% { transform: translate(-30px, 22px) scale(0.94); }
+}
+.ambient-blob {
+  position: absolute;
+  border-radius: 9999px;
+  /* soft edge via mask instead of filter:blur — near-zero GPU cost,
+     critical for weak devices (and frame capture) */
+  mask-image: radial-gradient(closest-side, black 25%, transparent 100%);
+  -webkit-mask-image: radial-gradient(closest-side, black 25%, transparent 100%);
+  opacity: 0.18;
+  pointer-events: none;
+  will-change: transform;
+  animation: blob-drift 18s ease-in-out infinite;
+}
+
+/* Hairline studio card: gradient surface, top-edge highlight, lift + wine glow */
+.card-studio {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface) 90%, var(--foreground) 4%),
+    var(--surface)
+  );
+  border: 1px solid var(--border);
+  transition:
+    transform 0.35s var(--ease-expo),
+    border-color 0.35s var(--ease-expo),
+    box-shadow 0.35s var(--ease-expo);
+}
+.card-studio::before {
+  content: "";
+  position: absolute;
+  inset-inline: 16px;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+}
+.card-studio:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 24px 48px -24px var(--accent-glow);
+}
+
+/* Mouse-tracked spotlight — pair with <SpotlightCard> which sets --mx/--my */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    var(--accent-light),
+    transparent 55%
+  );
+  transition: opacity 0.35s var(--ease-expo);
+}
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+/* Shine sweep across primary buttons */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+.shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 40%;
+  inset-inline-start: -60%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+.shine:hover::before {
+  inset-inline-start: 130%;
+  transition: inset-inline-start 0.7s var(--ease-expo);
+}
+
+/* Studio section label: — LABEL */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.section-label::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Giant ghost numeral behind editorial content */
+.ghost-numeral {
+  position: absolute;
+  z-index: 0;
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border-strong);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
