@@ -1,6 +1,7 @@
 import { SkillsGrid } from "@/components/features/SkillsGrid";
 import { Timeline } from "@/components/features/Timeline";
 import { CTABanner } from "@/components/sections/CTABanner";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import type { TimelineEntry } from "@/types";
 import { getTranslations } from "next-intl/server";
 
@@ -21,32 +22,50 @@ export default async function AboutPage() {
 
   return (
     <>
-      <div className="container mx-auto px-6 max-w-4xl py-24 md:py-32">
-        {/* Header */}
-        <header className="mb-20 text-center">
-          <h1 className="text-4xl md:text-6xl font-black text-text-primary mb-6">
+      {/* Page hero — studio backdrop, start-aligned */}
+      <header className="relative overflow-hidden">
+        <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden>
+          <div className="glow-accent absolute -end-40 -top-40 h-[480px] w-[480px] opacity-70" />
+        </div>
+        <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-24 lg:px-8 md:pb-24 md:pt-32">
+          <span className="section-label">{t("subtitle")}</span>
+          <h1 className="mt-4 max-w-3xl font-display text-4xl font-black leading-tight text-text-primary md:text-6xl">
             {t("heading")}
+            <span className="text-accent">.</span>
           </h1>
-          <p className="text-xl text-text-secondary leading-relaxed max-w-3xl mx-auto">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary md:text-xl">
             {t("description")}
           </p>
-        </header>
+        </div>
+      </header>
 
-        {/* Experience Section */}
-        <section className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text-primary mb-4">{t("experience.title")}</h2>
-            <div className="w-16 h-1 bg-accent mx-auto rounded-full" />
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        {/* Experience */}
+        <section className="border-t border-border py-16 md:py-24">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <div className="lg:sticky lg:top-28">
+                <SectionHeader
+                  index="01"
+                  label={t("subtitle")}
+                  title={t("experience.title")}
+                  className="mb-0 md:mb-0"
+                />
+              </div>
+            </div>
+            <div className="lg:col-span-8">
+              <Timeline entries={experiences} />
+            </div>
           </div>
-          <Timeline entries={experiences} />
         </section>
 
-        {/* Skills Section */}
-        <section className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text-primary mb-4">{t("skills.title")}</h2>
-            <div className="w-16 h-1 bg-accent mx-auto rounded-full" />
-          </div>
+        {/* Skills */}
+        <section className="border-t border-border py-16 md:py-24">
+          <SectionHeader
+            index="02"
+            label={t("subtitle")}
+            title={t("skills.title")}
+          />
           <SkillsGrid />
         </section>
       </div>

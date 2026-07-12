@@ -47,11 +47,14 @@ export function ProjectCard({
         className
       )}
     >
-      {/* Image Section */}
+      {/* Image Section — list view needs explicit dimensions: `fill` inside
+          an auto-height flex row collapses to 0 and the image vanishes */}
       <div
         className={cn(
-          "relative overflow-hidden bg-gray-100 dark:bg-gray-800",
-          isGrid ? "aspect-video w-full" : "w-full sm:w-64 h-48 sm:h-full shrink-0 rounded-xl"
+          "relative overflow-hidden bg-surface",
+          isGrid
+            ? "aspect-video w-full"
+            : "aspect-video w-full shrink-0 rounded-xl sm:aspect-[4/3] sm:w-72"
         )}
       >
         <Image
@@ -80,14 +83,14 @@ export function ProjectCard({
             </Badge>
           </div>
         )}
-        <h3 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-1">
+        <h3 className="mb-2 line-clamp-1 text-xl font-bold tracking-tight text-text-primary">
           {title}
         </h3>
-        <p className="mb-4 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
+        <p className="mb-4 line-clamp-2 text-sm text-text-secondary">
           {description}
         </p>
-        
-        <div className="mt-auto pt-4 flex items-center justify-between border-t border-gray-100 dark:border-gray-800">
+
+        <div className="mt-auto flex items-center justify-between border-t border-border pt-4">
           <div className="flex gap-2 isolate">
             <LikeButton projectId={project.id} initialCount={project.likeCount} />
           </div>
