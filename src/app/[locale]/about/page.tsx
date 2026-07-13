@@ -1,4 +1,6 @@
+import { CertificatesGrid } from "@/components/features/CertificatesGrid";
 import { SkillsGrid } from "@/components/features/SkillsGrid";
+import certificates from "@/content/certificates.json";
 import { Timeline } from "@/components/features/Timeline";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -68,6 +70,20 @@ export default async function AboutPage() {
           />
           <SkillsGrid />
         </section>
+
+        {/* Certificates — hidden until images are imported
+            (my portfolio/09 - Certificates → scripts/import-certificates.mjs) */}
+        {certificates.length > 0 && (
+          <section className="border-t border-border py-16 md:py-24">
+            <SectionHeader
+              index="03"
+              label={t("certificates.label")}
+              title={t("certificates.title")}
+              description={t("certificates.description")}
+            />
+            <CertificatesGrid />
+          </section>
+        )}
       </div>
 
       <CTABanner />
