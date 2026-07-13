@@ -1,6 +1,7 @@
 import { ProjectGrid } from "@/components/features/ProjectGrid";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { projects } from "@/content/projects";
+import { getCounters } from "@/lib/counters";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
@@ -11,6 +12,13 @@ export async function generateMetadata() {
 
 export default async function ProjectsPage() {
   const t = await getTranslations("projects");
+  // live engagement counters (views/likes) merged onto static content
+  const counters = await getCounters("project");
+  const projectsWithStats = projects.map((p) => ({
+    ...p,
+    views: counters[p.slug]?.views ?? 0,
+    likeCount: counters[p.slug]?.likes ?? 0,
+  }));
 
   return (
     <>
@@ -24,7 +32,7 @@ export default async function ProjectsPage() {
           </p>
         </header>
 
-        <ProjectGrid projects={projects} initialCategory="ALL" />
+        <ProjectGrid projects={projectsWithStats} initialCategory="ALL" />
       </div>
 
       <CTABanner />

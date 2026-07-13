@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { ToolsMarquee } from "@/components/sections/ToolsMarquee";
 import { featuredProjects } from "@/content/projects";
+import { getCounters } from "@/lib/counters";
 import { AboutSnippet } from "@/components/sections/AboutSnippet";
 import { Services } from "@/components/sections/Services";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
@@ -74,16 +75,22 @@ const stats: Stat[] = [
   { value: 3, suffix: "K+", labelKey: "publishersServed" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const [projCounters, artCounters] = await Promise.all([
+    getCounters("project"),
+    getCounters("article"),
+  ]);
+  const featured = featuredProjects.map((p) => ({ ...p, views: projCounters[p.slug]?.views ?? 0, likeCount: projCounters[p.slug]?.likes ?? 0 }));
+  const articles = mockArticles.map((a) => ({ ...a, views: artCounters[a.slug]?.views ?? 0 }));
   return (
     <>
       <Hero />
       <ToolsMarquee />
       <AboutSnippet />
       <Services />
-      <FeaturedProjects projects={featuredProjects} />
+      <FeaturedProjects projects={featured} />
       <Stats stats={stats} />
-      <LatestBlog articles={mockArticles} />
+      <LatestBlog articles={articles} />
       <CTABanner />
     </>
   );

@@ -19,14 +19,14 @@ model User {
 }
 
 model Project {
-  id          String   @id @default(cuid())
-  slug        String   @unique
+  id          String    @id @default(cuid())
+  slug        String    @unique
   titleEn     String
   titleAr     String
-  descEn      String   @db.Text
-  descAr      String   @db.Text
-  bodyEn      String?  @db.Text
-  bodyAr      String?  @db.Text
+  descEn      String    @db.Text
+  descAr      String    @db.Text
+  bodyEn      String?   @db.Text
+  bodyAr      String?   @db.Text
   category    Category
   tags        String[]
   coverImage  String
@@ -35,12 +35,12 @@ model Project {
   role        String?
   tools       String[]
   year        Int?
-  likeCount   Int      @default(0)
-  featured    Boolean  @default(false)
-  published   Boolean  @default(false)
+  likeCount   Int       @default(0)
+  featured    Boolean   @default(false)
+  published   Boolean   @default(false)
   publishedAt DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   media Media[]
   likes Like[]
@@ -68,22 +68,22 @@ model Media {
 }
 
 model Article {
-  id          String   @id @default(cuid())
-  slug        String   @unique
+  id          String    @id @default(cuid())
+  slug        String    @unique
   titleEn     String
   titleAr     String
-  excerptEn   String?  @db.Text
-  excerptAr   String?  @db.Text
-  bodyEn      String   @db.Text
-  bodyAr      String   @db.Text
+  excerptEn   String?   @db.Text
+  excerptAr   String?   @db.Text
+  bodyEn      String    @db.Text
+  bodyAr      String    @db.Text
   coverImage  String?
   tags        String[]
-  readTime    Int      @default(0)
-  views       Int      @default(0)
-  published   Boolean  @default(false)
+  readTime    Int       @default(0)
+  views       Int       @default(0)
+  published   Boolean   @default(false)
   publishedAt DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   @@index([published])
   @@index([publishedAt])
@@ -128,4 +128,18 @@ enum Category {
 enum MediaType {
   IMAGE
   VIDEO
+}
+
+// Lightweight per-slug engagement counters (views + likes) for projects and
+// articles — independent of the content source (static module now, CMS later).
+model Counter {
+  id        String   @id @default(cuid())
+  type      String // "project" | "article"
+  slug      String
+  views     Int      @default(0)
+  likes     Int      @default(0)
+  updatedAt DateTime @updatedAt
+
+  @@unique([type, slug])
+  @@map("counters")
 }

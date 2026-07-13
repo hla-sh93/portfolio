@@ -1,4 +1,5 @@
 import { BlogCard } from "@/components/features/BlogCard";
+import { getCounters } from "@/lib/counters";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { getTranslations } from "next-intl/server";
 
@@ -40,6 +41,8 @@ const mockArticles = [
 
 export default async function BlogPage() {
   const t = await getTranslations("blog");
+  const counters = await getCounters("article");
+  const articles = mockArticles.map((a) => ({ ...a, views: counters[a.slug]?.views ?? 0 }));
 
   return (
     <>
@@ -54,7 +57,7 @@ export default async function BlogPage() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {mockArticles.map((article, index) => (
+          {articles.map((article, index) => (
             <BlogCard key={article.id} article={article} index={index} />
           ))}
         </div>

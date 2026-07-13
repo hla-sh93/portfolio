@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
@@ -6,8 +7,12 @@ const globalForPrisma = globalThis as unknown as {
 
 function createPrismaClient() {
   try {
-    // Prisma 7 reads DATABASE_URL from the environment automatically
-    return new PrismaClient();
+    // Prisma 7 requires a driver adapter — pg against DATABASE_URL
+    if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL missing");
+    const adapter = new PrismaPg({
+      connectionString: process.env.DATABASE_URL,
+    });
+    return new PrismaClient({ adapter });
   } catch {
     // If PrismaClient fails to initialize (e.g. no DATABASE_URL),
     // return a proxy that throws helpful errors on use

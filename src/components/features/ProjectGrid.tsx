@@ -48,7 +48,7 @@ export function ProjectGrid({ projects, initialCategory = "ALL" }: ProjectGridPr
       {/* Controls Bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Categories Tab */}
-        <div className="flex-1 overflow-x-auto pb-2 md:pb-0">
+        <div className="no-scrollbar -mx-6 flex-1 overflow-x-auto px-6 md:mx-0 md:px-0">
           <div className="flex items-center gap-2">
             {CATEGORIES.map((category) => (
               <button

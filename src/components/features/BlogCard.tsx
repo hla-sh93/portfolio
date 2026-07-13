@@ -6,7 +6,7 @@ import type { ArticleWithMeta } from "@/types";
 import { format } from "date-fns";
 import { arSA, enUS } from "date-fns/locale";
 import { motion } from "framer-motion";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, Eye } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -63,6 +63,12 @@ export function BlogCard({ article, index = 0 }: BlogCardProps) {
               <div className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5" />
                 <span>{article.readTime} {t("minRead")}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Eye className="h-3.5 w-3.5" />
+                <span className="tabular-nums">
+                  {(article.views ?? 0).toLocaleString()}
+                </span>
               </div>
             </div>
 

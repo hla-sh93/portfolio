@@ -1,10 +1,12 @@
 import { ReadingProgress } from "@/components/features/ReadingProgress";
 import { TableOfContents } from "@/components/features/TableOfContents";
+import { ViewTracker } from "@/components/features/ViewTracker";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { Link } from "@/i18n/navigation";
+import { getCounters } from "@/lib/counters";
 import { format } from "date-fns";
 import { arSA, enUS } from "date-fns/locale";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Eye } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -217,8 +219,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     ? format(new Date(article.publishedAt), "MMMM d, yyyy", { locale: dateLocale })
     : "";
 
+  const counters = await getCounters("article");
+  const views = counters[article.slug]?.views ?? 0;
+
   return (
     <>
+      <ViewTracker type="article" slug={article.slug} />
       <ReadingProgress />
 
       <article className="min-h-screen pt-24 pb-16 md:pb-24">
@@ -240,6 +246,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-accent" />
               <span>{article.readTime} {t("minRead")}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Eye className="w-4 h-4 text-accent" />
+              <span className="tabular-nums">{views.toLocaleString()}</span>
             </div>
           </div>
 

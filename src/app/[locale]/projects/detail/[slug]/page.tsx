@@ -7,6 +7,9 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProjectBySlug } from "@/content/projects";
 import { MediaGallery } from "@/components/features/MediaGallery";
+import { ViewTracker } from "@/components/features/ViewTracker";
+import { getCounters } from "@/lib/counters";
+import { Eye } from "lucide-react";
 import type { Media as PrismaMedia } from "@prisma/client";
 
 
@@ -49,8 +52,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const description = isRtl ? project.descAr : project.descEn;
   const body = isRtl ? project.bodyAr : project.bodyEn;
 
+  const counters = await getCounters("project");
+  const stats = counters[project.slug] ?? { views: 0, likes: 0 };
+
   return (
     <>
+      <ViewTracker type="project" slug={project.slug} />
       <article className="min-h-screen">
         {/* Cover Section */}
         <div className="relative h-[60vh] md:h-[80vh] w-full bg-black">
@@ -87,8 +94,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 drop-shadow-xl">{title}</h1>
 
-            <div className="flex items-center gap-6">
-              <LikeButton projectId={project.id} initialCount={project.likeCount} className="bg-white/10" />
+            <div className="flex items-center gap-4">
+              <LikeButton
+                slug={project.slug}
+                initialCount={stats.likes}
+                className="border-white/20 bg-white/10 text-white"
+              />
+              <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-md">
+                <Eye className="h-4 w-4" />
+                <span className="tabular-nums">
+                  {stats.views.toLocaleString()}
+                </span>
+              </span>
             </div>
           </div>
         </div>

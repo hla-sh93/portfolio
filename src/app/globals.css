@@ -447,6 +447,15 @@ html { scroll-behavior: smooth; }
   transition: inset-inline-start 0.7s var(--ease-expo);
 }
 
+/* Hide scrollbars on horizontal tab/chip rails (touch & wheel still scroll) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Studio section label: — LABEL */
 .section-label {
   display: inline-flex;
