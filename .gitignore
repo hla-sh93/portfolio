@@ -51,3 +51,6 @@ PORTFOLIO_BLUEPRINT.md
 REDESIGN_PLAN.md
 build.log
 .claude/settings.local.json
+
+# Dev counter fallback store
+.counters.json

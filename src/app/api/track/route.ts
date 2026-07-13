@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { bump } from "@/lib/counter-store";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -37,30 +37,6 @@ export async function POST(req: NextRequest) {
   }
   const { type, slug, action } = parsed.data;
 
-  const data =
-    action === "view"
-      ? { views: { increment: 1 } }
-      : action === "like"
-        ? { likes: { increment: 1 } }
-        : { likes: { decrement: 1 } };
-
-  try {
-    const counter = await db.counter.upsert({
-      where: { type_slug: { type, slug } },
-      create: {
-        type,
-        slug,
-        views: action === "view" ? 1 : 0,
-        likes: action === "like" ? 1 : 0,
-      },
-      update: data,
-    });
-    return NextResponse.json({
-      views: counter.views,
-      likes: Math.max(0, counter.likes),
-    });
-  } catch {
-    // DB not reachable (e.g. local dev without Postgres) — degrade silently
-    return NextResponse.json({ views: 0, likes: 0 }, { status: 200 });
-  }
+  const counter = await bump(type, slug, action);
+  return NextResponse.json(counter);
 }
